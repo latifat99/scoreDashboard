@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import '../style.css'
 const Button=() =>{
     const[count,setCount]=useState(0)
-
+     const[point,setPoint]=useState(0)
     const handleIncreament=()=>{
         setCount(count + 1)
-
+         
         
     }
     
     const handleDecreament=()=>{
         setCount(count - 1)
-
+        
         
     }
     
@@ -29,7 +29,7 @@ const Button=() =>{
             
             </div>
         </div>
-        
+    
     )
 }
 export default Button

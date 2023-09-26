@@ -18,12 +18,7 @@ const Input=() =>{
         }
         setPlayer([...player,newPlayer]);
         setNoOfPlayer([player.length + 1])
-        setInputPlayer('')
-
-            
-          
-          
-          
+        setInputPlayer('')       
     };
          const handleDeletePlayer=(id)=>{
             const newList=player.filter((input)=> 
@@ -31,8 +26,10 @@ const Input=() =>{
             );
             setPlayer(newList)
             setNoOfPlayer([newList.length])
-         }
-         
+         };
+         const[count,setCount]=useState(0)
+
+   
         
 
     return(
@@ -52,11 +49,11 @@ const Input=() =>{
                         
                         {input.input}
                         <button className="delete" onClick={()=>handleDeletePlayer(input.id)} >x</button>
-                      
+                        
                     </li>
 
                     <div>
-                        <Button/>
+                    <Button/>
                     </div>
                     </div>
                 
@@ -71,7 +68,7 @@ const Input=() =>{
                     <h4>No of players:{noOfPlayer}</h4>
                 </div>
                 <div>
-                    <h4>Total Points:{}</h4>
+                    <h4>Total Points:</h4>
                 </div>
                 </div>
                 <div>
