@@ -11,7 +11,8 @@ const Input=() =>{
     const handleInputChange=(event)=>{
         setInputPlayer(event.target.value);
     };
-    const handleAddPlayer=(input)=>{
+    const handleAddPlayer=(e)=>{
+         if (e) e.preventDefault()
         const newPlayer={
             id:Math.random(),
             input:inputPlayer,
@@ -68,7 +69,7 @@ const Input=() =>{
                     <h4>No of players:{noOfPlayer}</h4>
                 </div>
                 <div>
-                    <h4>Total Points:</h4>
+                    <h4>Total Points:0</h4>
                 </div>
                 </div>
                 <div>
