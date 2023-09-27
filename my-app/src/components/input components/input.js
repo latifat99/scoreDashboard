@@ -28,7 +28,7 @@ const Input=() =>{
             setPlayer(newList)
             setNoOfPlayer([newList.length])
          };
-         const[count,setCount]=useState(0)
+         
 
    
         
