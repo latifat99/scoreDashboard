@@ -9,12 +9,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    border: 2px solid red;
     margin: 0 auto;
     
 }
 .section-one{
-    border: 2px solid black;
+    
     padding: 10px;
 border-radius: 10px;
     width: 70%;
@@ -67,6 +66,7 @@ ul{
     margin: 8px;
     padding: 8px;
     border-radius: 7px;
+    align-items: center;
     
 }
 .display{
@@ -81,7 +81,7 @@ ul{
 }
 .buttons{
     display: flex;
-    padding: 5px;
+    padding: 3px;
     background-color:rgb(218, 129, 129);
     gap:10px;
     margin: 5px;
@@ -162,21 +162,25 @@ input{
     width: 180px;
 }
 .section-one{
-    width: 100%;
-    padding: 5px;
+    width: 90%;
+    padding: 7px;
 }
 
 .player{
     padding: 5px;
-    width: 200px;
+    width: 230px;
     display: flex;
     justify-content: space-between;
+    margin: 8px;
 }
 .delete{
     margin-left:80px
 }
 .buttons{
-    padding: 0px;
+    padding: 1px;
+    gap: 0px;
+    margin-left: 0;
+
 }
 
 }

@@ -1,85 +1,132 @@
+import "../style.css";
+import React, { useState } from "react";
+import Button from "../button components/button";
+import Timer from "../timer components/timer";
 
-import '../style.css'
-import React, { useState } from 'react';
-import Button from '../button components/button';
-import Timer from '../timer components/timer';
-const Input=() =>{
-    
-    const[inputPlayer, setInputPlayer]=useState("")
-    const [player, setPlayer]=useState([])
-    const[noOfPlayer, setNoOfPlayer]=useState(0)
-    const handleInputChange=(event)=>{
-        setInputPlayer(event.target.value);
+const Input = () => {
+  const [inputPlayer, setInputPlayer] = useState("");
+  const [player, setPlayer] = useState([]);
+  const [noOfPlayer, setNoOfPlayer] = useState(0);
+
+  const handleInputChange = (event) => {
+    setInputPlayer(event.target.value);
+  };
+
+  const handleAddPlayer = () => {
+    if (inputPlayer === "") {
+      return;
+    }
+
+    const newPlayer = {
+      id: Math.random(),
+      input: inputPlayer,
+      point: 0,
     };
-    const handleAddPlayer=(e)=>{
-         if (e) e.preventDefault()
-        const newPlayer={
-            id:Math.random(),
-            input:inputPlayer,
-        }
-        setPlayer([...player,newPlayer]);
-        setNoOfPlayer([player.length + 1])
-        setInputPlayer('')       
-    };
-         const handleDeletePlayer=(id)=>{
-            const newList=player.filter((input)=> 
-             input.id !== id
-            );
-            setPlayer(newList)
-            setNoOfPlayer([newList.length])
-         };
-         
 
-   
-        
+    setPlayer([...player, newPlayer]);
+    setNoOfPlayer(player.length + 1);
+    setInputPlayer("");
+  };
 
-    return(
-     <div className='container'>
-        <div className='section-one'>    
-        <h3 className='heading'>SCOREBOARD</h3>   
-         
-        <div className='input'>
-            <input className='input_field'type='text' value={inputPlayer} onChange={handleInputChange}></input>
-        <button className="btn" onClick={handleAddPlayer} > Add player</button>
-            </div>
-              <ul > 
-              
-                {player.map((input)=>
-                      <div className='display'>
-                    <li className='player' key={input.id}>
-                        
-                        {input.input}
-                        <button className="delete" onClick={()=>handleDeletePlayer(input.id)} >x</button>
-                        
-                    </li>
+  const handleDeletePlayer = (id) => {
+    const newList = player.filter((input) => input.id !== id);
+    setPlayer(newList);
+    setNoOfPlayer(newList.length);
+  };
 
-                    <div>
-                    <Button/>
-                    </div>
-                    </div>
-                
-                     
-                
+  const handleIncreament = (id) => {
+    const updatedPlayers = player.map((p) => {
+      if (p.id === id) {
+        return { ...p, point: p.point + 1 };
+      }
+      return p;
+    });
 
-             )}
-              </ul>
-                <div className='footer'>
-                <div>
-                <div>
-                    <h4>No of players:{noOfPlayer}</h4>
-                </div>
-                <div>
-                    <h4>Total Points:0</h4>
-                </div>
-                </div>
-                <div>
-                <Timer/>
-                </div>  
-                </div> 
-        
+    setPlayer(updatedPlayers);
+  };
+
+  const handleDecreament = (id) => {
+    const updatedPlayers = player.map((p) => {
+      if (p.id === id) {
+        return { ...p, point: p.point - 1 };
+      }
+      return p;
+    });
+
+    setPlayer(updatedPlayers);
+  };
+
+  // Calculate total points
+  const totalPoints = player.reduce((total, p) => total + p.point, 0);
+
+  return (
+    <div className="container">
+      <div className="section-one">
+        <h3 className="heading">SCOREBOARD</h3>
+
+        <div className="input">
+          <input
+            className="input_field"
+            placeholder="Add a Player"
+            type="text"
+            value={inputPlayer}
+            onChange={handleInputChange}
+          ></input>
+          <button className="btn" onClick={handleAddPlayer}>
+            {" "}
+            Add player
+          </button>
         </div>
-     </div>
-        
-    )}
 
-export default Input
+        <ul>
+          {player.map((input) => (
+            <div className="display" key={input.id}>
+              <li className="player">
+                {input.input}
+                <button
+                  className="delete"
+                  onClick={() => handleDeletePlayer(input.id)}
+                >
+                  x
+                </button>
+              </li>
+
+              <div>
+                <div className="buttons">
+                  <button
+                    className="increament_btn"
+                    onClick={() => handleIncreament(input.id)}
+                  >
+                    +
+                  </button>
+                  <span>{input.point}</span>
+                  <button
+                    className="decreament_btn"
+                    onClick={() => handleDecreament(input.id)}
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </ul>
+        <div className="footer">
+          <div>
+            <div>
+              <h4>No of players: {noOfPlayer}</h4>
+            </div>
+            <div>
+              <h4>Total Points: {totalPoints}</h4> {/* Display total points */}
+            </div>
+          </div>
+          <div>
+            <Timer />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Input;
