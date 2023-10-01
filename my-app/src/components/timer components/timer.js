@@ -19,17 +19,13 @@ import { useInterval }from 'use-interval';
 
          const reset=()=>{
          if(counting ){
-           setCounter(0)|| setCounting(!counting)
+           setCounter(0)  
          } 
+         else{
+           setCounter(0)
+         }
     }
-      const handleCounting=()=>{
-        if (!counting)
-        {setCounting(!counting)}
-        else{
-          setCounting(counting)
-        }
-
-      }
+      
     
 
     return(
@@ -38,9 +34,9 @@ import { useInterval }from 'use-interval';
             <h5 className='head'>Stopwatch</h5>
           <span className='timer'>{counter}</span>
           <div className='reset'>
-            <button className='start_btn' onClick={handleCounting}
+            <button className='start_btn' onClick={()=>setCounting(!counting)}
           > 
-            {"start"}
+            {counting?"stop":"start"}
           </button>
             <button className='reset_btn' onClick={reset}> Reset</button></div>
           </div>
