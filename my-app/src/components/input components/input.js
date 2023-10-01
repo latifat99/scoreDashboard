@@ -1,6 +1,5 @@
 import "../style.css";
-import React, { useState } from "react";
-import Button from "../button components/button";
+import React, { useState } from "react"
 import Timer from "../timer components/timer";
 
 const Input = () => {
@@ -56,7 +55,7 @@ const Input = () => {
     setPlayer(updatedPlayers);
   };
 
-  // Calculate total points
+  
   const totalPoints = player.reduce((total, p) => total + p.point, 0);
 
   return (
@@ -117,7 +116,7 @@ const Input = () => {
               <h4>No of players: {noOfPlayer}</h4>
             </div>
             <div>
-              <h4>Total Points: {totalPoints}</h4> {/* Display total points */}
+              <h4>Total Points: {totalPoints}</h4> 
             </div>
           </div>
           <div>
